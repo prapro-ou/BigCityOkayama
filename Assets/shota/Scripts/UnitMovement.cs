@@ -11,6 +11,8 @@ public class UnitMovement : MonoBehaviour
 
     public bool isCommandedToMove;
     
+    DirectionIndicator directionIndicator;
+    
     Animator animator;
 
 	private void Start()
@@ -18,6 +20,7 @@ public class UnitMovement : MonoBehaviour
 		cam = Camera.main;
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		animator = GetComponent<Animator>();
+		directionIndicator = GetComponent<DirectionIndicator>();
 	}
 	
 	private void Update()
@@ -32,6 +35,7 @@ public class UnitMovement : MonoBehaviour
 			    isCommandedToMove = true;
 				agent.SetDestination(hit.point);
 				animator.SetBool("isMoving",true);
+				directionIndicator.DrawLine(hit);
 			}
 		}
 
