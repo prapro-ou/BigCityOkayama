@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +31,5 @@ public class BuySystem : MonoBehaviour
         unitsPanel.SetActive(false);
         buildingsPanel.SetActive(true);
     }
-    
-    
+
 }

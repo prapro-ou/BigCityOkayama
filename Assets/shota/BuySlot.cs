@@ -16,7 +16,7 @@ public class BuySlot : MonoBehaviour
 
    private void Start()
    {
-      UpdateAvailabilityUI();
+      HandleResourceChanged();
    }
 
    public void ClickedOnSlot()
@@ -42,4 +42,43 @@ public class BuySlot : MonoBehaviour
       }
    }
    
+   private void OnEnable()
+   {
+      ResourceManager.Instance.OnResourceChanged += HandleResourceChanged;
+        
+   }
+    
+   private void OnDisable()
+   {
+      ResourceManager.Instance.OnResourceChanged -= HandleResourceChanged;
+        
+   }
+
+
+  
+
+   private void HandleResourceChanged()
+   {
+      ObjectData objectData = DatabaseManager.Instance.databaseSO.objectsData[databaseItemID];
+
+      bool requirementMet = true;
+
+      foreach (BuildRequirement req in objectData.requirements)
+      {
+         if (ResourceManager.Instance.GetResourceAmount(req.resource) < req.amount)
+         {
+            requirementMet = false;
+            break;
+         }
+            
+      }
+        
+      isAvailable = requirementMet;
+
+      UpdateAvailabilityUI();
+
+
+
+   }
+
 }

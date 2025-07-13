@@ -18,5 +18,16 @@ MonoBehaviour:
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 5641804892570249713, guid: 5f4efa949c360314fbfeffb607db1624, type: 3}
-    <requirements>k__BackingField: []
+    <requirements>k__BackingField:
+    - resource: 0
+      amount: 150
+    <benefits>k__BackingField: []
+  - <Name>k__BackingField: Mitarashi
+    <ID>k__BackingField: 1
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 0}
+    <requirements>k__BackingField:
+    - resource: 0
+      amount: 150
     <benefits>k__BackingField: []
