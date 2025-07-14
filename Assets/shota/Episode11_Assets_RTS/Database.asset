@@ -15,19 +15,23 @@ MonoBehaviour:
   objectsData:
   - <Name>k__BackingField: Muscat
     <ID>k__BackingField: 0
+    <thisBuildingType>k__BackingField: 1
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 5641804892570249713, guid: 5f4efa949c360314fbfeffb607db1624, type: 3}
-    <requirements>k__BackingField:
+    <resourceRequirements>k__BackingField:
     - resource: 0
       amount: 150
+    <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
   - <Name>k__BackingField: Mitarashi
     <ID>k__BackingField: 1
+    <thisBuildingType>k__BackingField: 2
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 0}
-    <requirements>k__BackingField:
+    <Prefab>k__BackingField: {fileID: 5641804892570249713, guid: 5f4efa949c360314fbfeffb607db1624, type: 3}
+    <resourceRequirements>k__BackingField:
     - resource: 0
-      amount: 150
+      amount: 100
+    <buildDependency>k__BackingField: 01000000
     <benefits>k__BackingField: []
