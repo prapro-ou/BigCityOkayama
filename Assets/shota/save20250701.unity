@@ -3820,6 +3820,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5519346146614687767, guid: cf0d87ae5c2075a46914435d260dca58, type: 3}
+      propertyPath: m_TagString
+      value: Unit
+      objectReference: {fileID: 0}
     - target: {fileID: 8912853681181326876, guid: cf0d87ae5c2075a46914435d260dca58, type: 3}
       propertyPath: facingCamera
       value: 
