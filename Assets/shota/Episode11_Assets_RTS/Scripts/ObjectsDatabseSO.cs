@@ -27,7 +27,8 @@ public enum BuildingType
 {
     None,
     Muscat,
-    Mitarashi
+    Mitarashi,
+    PlayerCastle
     
 }
 

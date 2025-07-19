@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public Button buildButton;
+   public Button buildButton;
     public PlacementSystem placement;
 
     private void Start()
     {
         
-        buildButton.onClick.AddListener(() => Construct(0));
+      //  buildButton.onClick.AddListener(() => Construct(0));
        
     }
 
     private void Construct(int id)
     {
         Debug.Log("clicked");
-        placement.StartPlacement(id);
+       // placement.StartPlacement(id);
     }
 }

@@ -18,14 +18,26 @@ public class ResourceManager : MonoBehaviour
         {
             Instance = this;
         }
+        
+        resources.Add(ResourcesType.Credits, 300);
+        resources.Add(ResourcesType.Wood, 150);
+        resources.Add(ResourcesType.Stone, 100);
+        resources.Add(ResourcesType.Gold, 50);
+        resources.Add(ResourcesType.Food, 200);
+        
     }
 
-    public int credits = 300;
-
+    //public int credits = 300;
+    public Dictionary<ResourcesType, int> resources = new Dictionary<ResourcesType, int>();
+    
     public event Action OnResourceChanged;
     public event Action OnBuildingsChanged;
 
     public TextMeshProUGUI creditsUI;
+    public TextMeshProUGUI woodUI;
+    public TextMeshProUGUI stoneUI;
+    public TextMeshProUGUI goldUI;
+    public TextMeshProUGUI foodUI;
 
 
     public List<BuildingType> allExistingBuildings;
@@ -33,11 +45,16 @@ public class ResourceManager : MonoBehaviour
     
     public enum ResourcesType
     {
-        Credits
+        Credits,
+        Wood,
+        Stone,
+        Food,
+        Gold
     }
 
     private void Start()
     {
+        
         UpdateUI();
     }
 
@@ -60,31 +77,22 @@ public class ResourceManager : MonoBehaviour
     
     public void IncreaseResource(ResourcesType resource, int amountToIncrease)
     {
-        switch (resource)
+        if (resources.ContainsKey(resource))
         {
-            case ResourcesType.Credits:
-                credits += amountToIncrease;
-
-                break;
-            default:
-                break;
+            resources[resource] += amountToIncrease;
+            OnResourceChanged?.Invoke(); // UI更新のイベントを発行
         }
         
-        OnResourceChanged?.Invoke();
     }
     
     
     public void DecreaseResource(ResourcesType resource, int amountToDecrease)
     {
-        switch (resource)
+        if (resources.ContainsKey(resource) && resources[resource] >= amountToDecrease)
         {
-            case ResourcesType.Credits:
-                credits -= amountToDecrease;
-                break;
-            default:
-                break;
+            resources[resource] -= amountToDecrease;
+            OnResourceChanged?.Invoke(); // UI更新のイベントを発行
         }
-        OnResourceChanged?.Invoke();
     }
 
 
@@ -92,14 +100,18 @@ public class ResourceManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        creditsUI.text = $"{credits}";
+        if(creditsUI != null) creditsUI.text = $"Credits: {resources[ResourcesType.Credits]}";
+        if(woodUI != null) woodUI.text = $"Woods: {resources[ResourcesType.Wood]}";
+        if(stoneUI != null) stoneUI.text = $"Stone: {resources[ResourcesType.Stone]}";
+        if(goldUI != null) goldUI.text = $"Gold: {resources[ResourcesType.Gold]}";
+        if(foodUI != null) foodUI.text = $"Food: {resources[ResourcesType.Food]}";
        
     }
     
     
     public int GetCredits()
     {
-        return credits;
+        return resources[ResourcesType.Credits];
     }
 
     
@@ -107,14 +119,12 @@ public class ResourceManager : MonoBehaviour
     
     internal int GetResourceAmount(ResourcesType resource)
     {
-        switch (resource)
+        if (resources.ContainsKey(resource))
         {
-            case ResourcesType.Credits:
-                return credits;
-            default:
-                break;
+            return resources[resource];
         }
-
+        
+        // 存在しない場合は0を返す
         return 0;
     }
 
@@ -135,5 +145,13 @@ public class ResourceManager : MonoBehaviour
         OnResourceChanged -= UpdateUI;
     }
     
+    
+    
+   // public void AddCredits(int amount)
+   //{
+   //   credits += amount;
+   //  // 将来的に、クレジットが増えた時のUIアニメーションや効果音などをここに追加できる
+   // Debug.Log($"{amount} クレジット獲得！ 現在のクレジット: {credits}");
+   // }
     
 }

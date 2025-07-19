@@ -29,9 +29,20 @@ MonoBehaviour:
     <thisBuildingType>k__BackingField: 2
     description: 
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 5641804892570249713, guid: 5f4efa949c360314fbfeffb607db1624, type: 3}
+    <Prefab>k__BackingField: {fileID: 8918333965104642251, guid: 7a9cdeb7c53656847bfcdb1827146fef, type: 3}
     <resourceRequirements>k__BackingField:
     - resource: 0
       amount: 100
     <buildDependency>k__BackingField: 01000000
+    <benefits>k__BackingField: []
+  - <Name>k__BackingField: Castle
+    <ID>k__BackingField: 2
+    <thisBuildingType>k__BackingField: 3
+    description: 
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 1678284672306040569, guid: 3257f3ed5cce38146a08a5d8d0d62f29, type: 3}
+    <resourceRequirements>k__BackingField:
+    - resource: 3
+      amount: 100
+    <buildDependency>k__BackingField: 
     <benefits>k__BackingField: []
